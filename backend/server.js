@@ -20,12 +20,13 @@ app.use(express.json()); //The json response from FE to BE is parsed using this
 app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-encoded form data
 
 // CORS Configuration
-app.use(cors({
-  origin: "https://zaayka.vercel.app", // Add frontend here
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
-})); //Access BE from any FE
+app.use(cors());
+// app.use(cors({
+//   origin: "https://zaayka.vercel.app", // Add frontend here
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+//   allowedHeaders: ["Content-Type", "Authorization"],
+//   credentials: true,
+// })); //Access BE from any FE
 // app.use(express.urlencoded({ extended: false }));
 
 
