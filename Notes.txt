@@ -1,0 +1,159 @@
+PROBLEMS
+on reload, sign up showing immediately then page reload 
+change food_list to foodList everywhere
+images in order summary
+
+setData({
+       ...data,
+        [event.target.name]: event.target.value
+    })
+setData(data => ({
+       ...data,
+        [event.target.name]: event.target.value
+    }))
+
+e.preventDefault() in coupon button
+
+check fail status in stripe and redirecting to home page
+
+add logic for secured routes(order,etc)
+
+study get/post and update get user order if required
+
+add toast for add/remove cart item
+
+add track order for specific order
+
+add food tags
+
+responsiveness
+
+
+NOTES
+
+Create Navbar then create routes
+
+create hero section, explore menu
+
+create context
+
+create food catalog and food item
+
+now we will work on manage cart
+create add to cart, remove from cart and cart items. Add them to context, then add to food item
+
+create footer
+
+make website responsive
+
+
+work on LoginSignup, signup. add state and update Navbar
+
+build cart page
+
+check edge cases
+
+make cart bottom and order summary
+
+create place order
+
+make form for user details and update logic for coupon verification
+
+work on backend
+
+create server.js, install packages
+test express, connect mongodb
+add env variables
+add food model
+
+
+creating APIs
+create food controller
+
+creating Routes
+create food.routes.js
+import multer and use multer.diskStorage
+post using upload.single()
+
+in controller, create food and save in DB
+test it
+
+add route for accessing image in server.js
+NOTE - do not use /api/v1 for serving static files
+
+create endpoint for listing food-items
+
+next, create endpoint for removing food-item
+test
+
+Create admin folder
+create navbar and sidebar components
+
+create add, list and order pages
+
+edit add.jsx
+take input and create api endpoint
+test 
+
+in list.jsx, get data and display similar to cart
+add functionality for remove product
+
+In backend, create user model,controller, routes and add to server.js
+for user controller, create user similar to Youtube
+create tokens to assign
+
+create controller for login then test register and login
+
+add api endpoint in frontend on pressing buttons
+
+in loginSignup, add change handler and submit handler, name and value properties to inputs
+add onsubmit handler 
+install axios, toastify
+add token state,url in context
+use localstorage to set token in local storage
+test api
+
+now in navbar use token, setToken for changing icon of button
+implement the account options.
+
+now create logout functionality. use token and localstorage.
+
+now get food_list (food catalog) from database rather than assets
+study and implement 
+
+now on reloading, cartItems is reset. To prevent this, we save the items to DB.
+
+now in backend, create cart controller and write logic for add,remove,get data and clear cart.
+create cart route
+
+create auth middleware for secured cart routes. 
+
+the auth middleware will decode the id from token and save it to req.body. When we use next(), control is passed to cart functions which can access the id from req.body
+
+in add to cart controller , get user and food id from req.body. check if food item exists, then update accordingly
+
+add removeFromCart, getCart and clearCart similarly.
+
+integrate these APIs in frontend
+
+use useeffects to save data on reload
+
+
+add stripe gateway. add order model, route and controller.
+edit placeOrder to send it to stripe
+
+now we have to verify if payment was successful, and change paymentStatus in order model.
+we should use WebHooks but currently we are doing other method - verifyOrder
+
+create verifyOrder and add to frontend
+create verification.jsx
+study place-self
+
+useEffect must not return anything besides a function, which is used for clean-up.
+
+now create my orders. 
+in order controller add user order function that can be accessed via api
+
+create admin order and add its controller to change orderStatus
+
+study refs added for scrolling

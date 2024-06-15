@@ -1,0 +1,8 @@
+ochre - 230, 182, 64
+dark ochre - 229 150 65
+orange - 217 63 41
+dark orange - 186 50 39 
+coffee - 76 48 44
+dark coffee - 66 41 36
+dark green - 106 150 42
+green  - 127 158 43

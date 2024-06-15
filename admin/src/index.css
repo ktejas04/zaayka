@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    font-family: 'Quicksand', sans-serif;
+}
+
+@layer utilities {
+    .active { 
+        @apply bg-carrot/35 border border-carrot;
+    }
+}
