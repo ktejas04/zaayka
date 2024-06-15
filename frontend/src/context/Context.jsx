@@ -7,7 +7,7 @@ const ContextProvider = (props) => {
 
     const [cartItems, setCartItems] = useState({});
     const [discountRate, setDiscountRate] = useState(0)
-    const url = 'https://apizaayka-6ybke9b09-ktejas04s-projects.vercel.app/';
+    const url = 'https://zaayka-backend.vercel.app';
     const [token, setToken] = useState("")
     const [food_list, setFoodList] = useState([]);
     const [name, setName] = useState("")
