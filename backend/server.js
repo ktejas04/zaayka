@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-enco
 
 app.use(cors(
   {
-    origin: "https://zaayka.vercel.app/", //Add frontend here
+    origin: "https://zaayka.vercel.app", //Add frontend here
     methods: ["GET","POST"],
     credentials: true
   }
