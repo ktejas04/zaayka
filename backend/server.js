@@ -27,6 +27,13 @@ app.use(cors());
 //   allowedHeaders: ["Content-Type", "Authorization"],
 //   credentials: true,
 // })); //Access BE from any FE
+
+app.use(cors({
+  origin: "https://zaayka.vercel.app", // Add frontend here
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+})); //Access BE from any FE
 // app.use(express.urlencoded({ extended: false }));
 
 
