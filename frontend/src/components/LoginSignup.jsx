@@ -41,6 +41,7 @@ const LoginSignup = ({setShowLoginSignup}) => {
       if (response.data.success) {
         // console.log(response.data);
         setToken(response.data.token);
+        setName(response.data.user.name);
         localStorage.setItem("token", response.data.token);
         setShowLoginSignup(false);
         // window.location.reload();

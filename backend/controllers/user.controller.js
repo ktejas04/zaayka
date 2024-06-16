@@ -148,5 +148,8 @@ const loginUser = async (req, res) => {
     }
 }
 
+//Reset Password
+// const resetPassword = async (req, res) => {}
+
 
 export { loginUser, registerUser }

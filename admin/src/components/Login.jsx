@@ -2,13 +2,16 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import axios from "axios";
 
-const Login = ({setAllowLogin, allowLogin}) => {
+const Login = ({setAllowLogin}) => {
 
     const [data, setData] = useState({
         adminId : "",
         password: ""
     });
+
+    const url="http://localhost:8000"
 
     const navigate = useNavigate();
 
@@ -19,15 +22,20 @@ const Login = ({setAllowLogin, allowLogin}) => {
         }));
     }
 
-    const onSubmitHandler = (event) => {
+    const onSubmitHandler = async (event) => {
         event.preventDefault();
-        if (data.adminId === "kt" && data.password === "KT"){ //@zaayka-admin2024
-            setAllowLogin(true);
-            toast.success("Login Successful");
-            navigate('/');
-            // window.location.reload();
-        } else {
-          toast.error('Invalid Credentials');
+        try {
+            const response = await axios.post(`${url}/api/v2/admin/login`, {adminId: data.adminId, password: data.password});
+            if (response.data.success) { 
+                setAllowLogin(true);
+                toast.success(response.data.message);
+                navigate('/');
+                // window.location.reload();
+            } else {
+                toast.error(response.data.message);
+            }
+        } catch (error) {
+            console.log("Error: ", error);
         }
     }
 

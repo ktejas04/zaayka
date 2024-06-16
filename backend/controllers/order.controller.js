@@ -52,6 +52,18 @@ const placeOrder = async (req, res) => {
                 product_data: {
                     name: "Delivery Charges"
                 },
+                unit_amount: 0
+            },
+            quantity: 1
+        });
+
+        // Add Platform Fee
+        line_items.push({
+            price_data: {
+                currency: "inr",
+                product_data: {
+                    name: "Platform Fee"
+                },
                 unit_amount: 2 * 100
             },
             quantity: 1

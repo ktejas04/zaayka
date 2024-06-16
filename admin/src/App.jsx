@@ -17,7 +17,6 @@ const App = () => {
     // Retrieve the initial state from local storage
     return localStorage.getItem('allowLogin') === 'true';
   });
-  // const [allowLogin, setAllowLogin] = useState(false);
 
   const navigate = useNavigate();
 
@@ -31,10 +30,6 @@ const App = () => {
     // console.log(allowLogin);
     localStorage.setItem('allowLogin', allowLogin);
 
-    // if (allowLogin) {
-    //   navigate('/');
-    // }
-
     return ()=>{};
   },[allowLogin]);
 
@@ -45,7 +40,7 @@ const App = () => {
           !allowLogin? (
             <Routes>
               <Route path="/" element={<Navigate to="/login" />} />
-              <Route path="/login" element={<Login url={url} setAllowLogin={setAllowLogin} allowLogin={allowLogin} />} />
+              <Route path="/login" element={<Login url={url} setAllowLogin={setAllowLogin} />} />
               <Route path="*" element={<Error />} />
             </Routes>
           ) : (
