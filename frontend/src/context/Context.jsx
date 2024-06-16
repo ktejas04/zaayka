@@ -15,9 +15,6 @@ const ContextProvider = (props) => {
     const [name, setName] = useState("");
     const [couponCode, setCouponCode] = useState("");
 
-    // useEffect(() => console.log("Hello ",name),[name]);
-
-
     // Add to Cart
     const addToCart = async (itemId) => {
         if (!cartItems[itemId]) { //if prod with this id is not in cart add it

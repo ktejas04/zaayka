@@ -11,7 +11,8 @@ const placeOrder = async (req, res) => {
 
     const frontend_url = process.env.FRONTEND_URL;
     // console.log(req.body);
-    const {userId, items, amount, address} = req.body;
+    const {userId, items, amount, address, discount} = req.body;
+    // console.log(discount);
     
     // console.log(items);
     try {
@@ -32,12 +33,12 @@ const placeOrder = async (req, res) => {
         //Logic for payment link
         
         const line_items = items.map(lineItem => {
-            console.log(lineItem.name); // Ensure this prints correctly
+            // console.log(lineItem.name); // Ensure this prints correctly
             return {
                 price_data: {
                     currency: "inr",
                     product_data: {
-                        name: lineItem.name,
+                        name: lineItem.name,                        
                     },
                     unit_amount: lineItem.price * 100
                 },
@@ -52,10 +53,34 @@ const placeOrder = async (req, res) => {
                 product_data: {
                     name: "Delivery Charges"
                 },
+                unit_amount: 0
+            },
+            quantity: 1
+        });
+
+        //Platform Fee
+        line_items.push({
+            price_data: {
+                currency: "inr",
+                product_data: {
+                    name: "Platform Fee"
+                },
                 unit_amount: 2 * 100
             },
             quantity: 1
         });
+
+        //Subtract discount
+        // line_items.push({
+        //     price_data: {
+        //         currency: "inr",
+        //         product_data: {
+        //             name: "Discount"
+        //         },
+        //         unit_amount: discount * 100
+        //     },
+        //     quantity: 1
+        // });
 
         // Logging the line_items array for debugging
         // console.log("Line items:", JSON.stringify(line_items, null, 2));
@@ -87,6 +112,7 @@ const placeOrder = async (req, res) => {
 //Verify Order - set Payment status and keep/delete order based on it
 const verifyOrder = async (req, res) => {
     const {orderId, success } = req.body;
+    // console.log(success);
    try {
      if (success === "true") {
          //Update payment status

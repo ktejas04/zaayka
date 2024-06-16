@@ -17,10 +17,10 @@ const PORT = process.env.PORT || 3000;
 // CORS Configuration
 // app.use(cors());
 app.use(cors({
-  origin: process.env.CORS_ORIGIN, // Add frontend here
+  origin: [process.env.CORS_ORIGIN_FRONTEND,process.env.CORS_ORIGIN_ADMIN], // Add frontend here
+  credentials: true,
   // methods: ["GET", "POST", "PUT", "DELETE"],
   // allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
 })); //Access BE from any FE
 // app.use(express.urlencoded({ extended: false }));
 
