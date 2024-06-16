@@ -17,15 +17,15 @@
 
   // console.log(process.env.CORS_ORIGIN_FRONTEND, process.env.CORS_ORIGIN_ADMIN);
   // CORS Configuration
-  // app.use(cors());
-  app.use(cors({
-    // origin: [process.env.CORS_ORIGIN_FRONTEND, process.env.CORS_ORIGIN_ADMIN], // Add frontend here
-    // methods: ["GET", "POST", "PUT", "DELETE"],
-    origin: process.env.CORS_ORIGIN,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })); //Access BE from any FE
+  app.use(cors());
+  // app.use(cors({
+  //   // origin: [process.env.CORS_ORIGIN_FRONTEND, process.env.CORS_ORIGIN_ADMIN], // Add frontend here
+  //   // methods: ["GET", "POST", "PUT", "DELETE"],
+  //   origin: process.env.CORS_ORIGIN,
+  //   methods: ["GET", "POST", "PUT", "DELETE"],
+  //   allowedHeaders: ["Content-Type", "Authorization"],
+  //   credentials: true,
+  // })); //Access BE from any FE
   // app.use(express.urlencoded({ extended: false }));
 
   // Middlewares
