@@ -11,7 +11,7 @@ const Login = ({setAllowLogin}) => {
         password: ""
     });
 
-    const url="http://localhost:8000"
+    const url="https://zaayka-backend.vercel.app"
 
     const navigate = useNavigate();
 
