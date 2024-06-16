@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const Context = createContext(null)
 
@@ -7,10 +8,12 @@ const ContextProvider = (props) => {
 
     const [cartItems, setCartItems] = useState({});
     const [discountRate, setDiscountRate] = useState(0)
-    const url = 'https://zaayka-backend.vercel.app';
+    // const url = 'https://zaayka-backend.vercel.app';
+    const url = 'http://localhost:8000';
     const [token, setToken] = useState("")
     const [food_list, setFoodList] = useState([]);
-    const [name, setName] = useState("")
+    const [name, setName] = useState("");
+    const [couponCode, setCouponCode] = useState("");
 
     // useEffect(() => console.log("Hello ",name),[name]);
 
@@ -23,16 +26,21 @@ const ContextProvider = (props) => {
         else {
             setCartItems(prev => ({...prev, [itemId] : prev[itemId] + 1})) //adding quantity as required
         }
+        toast.success("Item added to cart");
 
         if (token) {
             // await axios.post(`${url}/api/v1/cart/add`, {itemId}, {headers: {token}}); // 'token': token
-            const reponse = await axios.post(`${url}/api/v1/cart/add`, {itemId}, {headers: {token}}) // 'token': token
-               .then(res => {
-                    console.log(res.data);
-                })
-               .catch(err => {
-                    console.log(err);
-                })
+            const response = await axios.post(`${url}/api/v1/cart/add`, {itemId}, {headers: {token}}); // 'token': token
+            if (response.data.success){
+                // console.log(response.data);
+                toast.success(response.data);
+            }
+            else {
+                // console.log(response.data);
+                toast.error(response.data);
+                console.log("ERROR : ", response.data.error);
+ 
+           }
         }
     }
 
@@ -48,15 +56,18 @@ const ContextProvider = (props) => {
                 return newCartItems
             })
         }
+        toast.success("Item removed from cart");
+
 
         if (token) {
            // await axios.post(`${url}/api/v1/cart/remove`  , {itemId}, {headers : {token}});
            const response =  await axios.post(`${url}/api/v1/cart/remove`  , {itemId}, {headers : {token}});
            if (response.data.success){
-                console.log(response.data);
+                 toast.success(response.data);
+                // console.log(response.data);
             }
             else {
-                console.log(response.data);
+                toast.error(response.data);
                 console.log("ERROR : ", response.data.error);
  
            }
@@ -69,15 +80,18 @@ const ContextProvider = (props) => {
             const {[itemId]: _,...newCartItems} = prev
             return newCartItems
         })
+        toast.success("Item deleted from cart");
+
 
         if (token) {
             // await axios.post(`${url}/api/v1/cart/delete`, {itemId}, {headers: {token}});
             const response = await axios.post(`${url}/api/v1/cart/delete`, {itemId}, {headers: {token}});
             if (response.data.success){
-                console.log(response.data);
+                 toast.success(response.data);
+                // console.log(response.data);
             }
             else {
-                console.log(response.data);
+                toast.error(response.data);
                 console.log("ERROR : ", response.data.error);
  
             }
@@ -87,15 +101,17 @@ const ContextProvider = (props) => {
     // Clear Cart
     const clearCart = async () => {
         setCartItems({})
+        toast.success("Cart Cleared");
 
         if (token) {
             // await axios.post(`${url}/api/v1/cart/clear`, {}, {headers: {token}});
             const response = await axios.post(`${url}/api/v1/cart/clear`, {}, {headers: {token}});
             if (response.data.success){
-                console.log(response.data);
+                toast.success(response.data);
+                // console.log(response.data);
             }
             else {
-                console.log(response.data);
+                toast.error(response.data);
                 console.log("ERROR : ", response.data.error);
  
            }
@@ -114,9 +130,12 @@ const ContextProvider = (props) => {
     const getTotalCartAmount = () => {
         // console.log(cartItems);
         let totalAmount = 0;
+
+        if(cartItems && food_list){
+
         for (const item in cartItems) {
             totalAmount += food_list.find(food_item => food_item._id === item).price * cartItems[item];
-        }
+        }}
         // console.log(totalAmount);
         return totalAmount;
     }
@@ -131,19 +150,19 @@ const ContextProvider = (props) => {
         console.log(cartItems);
     },[cartItems])*/
 
-    const fetchFoodList = async () => {
+    const fetchFoodList = async () => { //to set food_list
         const response = await axios.get(url+"/api/v1/food/list");
         if (response.data.success) {
         setFoodList(response.data.data)
         }
         else {
-            console.log(response.data);
+            toast.error(response.data);
             console.log("ERROR : ", response.data.error);
 
        }
     }
 
-    const loadCartData = async (token) => {
+    const loadCartData = async (token) => { //to set cartItems
         const response = await axios.get(`${url}/api/v1/cart/get`, {headers: {token}}) //for post keep 2nd parameter empty object
         // console.log(response);
         if (response.data.success) {
@@ -152,7 +171,7 @@ const ContextProvider = (props) => {
             setCartItems(response.data.cartData);
         }
         else {
-            console.log(response.data);
+            toast.error(response.data);
             console.log("ERROR : ", response.data.error);
 
        }
@@ -181,6 +200,8 @@ const ContextProvider = (props) => {
         url, 
         token,
         name,
+        couponCode,
+        setCouponCode,
         setName,
         setToken,
         setCartItems,

@@ -32,10 +32,11 @@ const Add = ({url}) => {
         formData.append("price", Number(data.price));
         formData.append("image", image);
 
-        console.log("Form Data:", Array.from(formData.entries())); // Logging formData to check contents
+        // console.log("Form Data:", Array.from(formData.entries())); // Logging formData to check contents
 
         try {
             const response = await axios.post(`${url}/api/v1/food/add`, formData);
+            // console.log(response.data);
             // response.data.success = false;
             if (response.data.success) {
                 setData({
@@ -45,7 +46,7 @@ const Add = ({url}) => {
                     price: ""
                 });
                 setImage(false);
-                console.log(fileInputRef.current.value);
+                // console.log(fileInputRef.current.value);
                 fileInputRef.current && (fileInputRef.current.value = null);
                 toast.success(response.data.message);
             } else {
@@ -60,18 +61,19 @@ const Add = ({url}) => {
 
     const onChangeHandler = (event) => {
         if (event.target.name === "image") {
+            // console.log(event.target.files);
             setImage(event.target.files[0]);
         } else if (event.target.name === "category") {
             setNewCategory(event.target.value === "New");
-            setData({
+            setData(data => ({
                 ...data,
                 [event.target.name]: event.target.value
-            });
+            }));
         } else {
-            setData({
+            setData(data => ({
                 ...data,
                 [event.target.name]: event.target.value
-            });
+            }));
         }
         // console.log(data,image);
     }

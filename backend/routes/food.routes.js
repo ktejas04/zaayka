@@ -1,24 +1,14 @@
 import { Router} from "express";
 import { addFoodItem, getFoodList, deleteFoodItem } from "../controllers/food.controller.js";
-import multer from "multer";
+import { upload } from "../middlewares/multer.middleware.js";
+
 
 const foodRouter = Router();
 
-//Post - to send data tos erver +> req, then we get response +> res
+//Post - to send data to server => req, then we get response => res
 
-//Image Storage Engine
 
-const storage = multer.diskStorage({
-    destination: "uploads",
-    filename: (req, file, cb) => {
-        return cb(null, `${Date.now()}${file.originalname}`); //Date,now for unique filename
-    }
-})
-//File is stored in uploads folder
-
-const upload = multer({storage})
-
-foodRouter.post("/add", upload.single("image"), addFoodItem);
+foodRouter.post("/add", upload.single("image"), addFoodItem); //image is fieldname (jis fieldName se upload hoga), can be accessed in multer
 
 foodRouter.get("/list", getFoodList);
 

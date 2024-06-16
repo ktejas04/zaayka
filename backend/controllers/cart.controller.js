@@ -214,7 +214,7 @@ const clearCart = async(req,res) => {
     
         res.json({
             success: true,
-            message: "Cart Data Cleared",
+            message: "Cart Cleared",
             user: userData.name,
             cartData
         })

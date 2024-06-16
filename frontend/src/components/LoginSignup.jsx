@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 const LoginSignup = ({setShowLoginSignup}) => {
 
-  const [currState, setCurrState] = useState("Sign Up")
+  const [currState, setCurrState] = useState("Sign In")
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -14,14 +14,14 @@ const LoginSignup = ({setShowLoginSignup}) => {
   })
 
   const {url, token, setToken, setName} = useContext(Context);
-  const action = currState === "Login" ? "login" : "register";
+  const action = currState === "Sign In" ? "login" : "register";
 
 
   const onChangeHandler = (event) => {
-    setData({
-     ...data,
+    setData(data => ({
+      ...data,
       [event.target.name]: event.target.value
-    })
+    }));
   }
 
   // useEffect(() => console.log(currState), [currState])
@@ -51,12 +51,18 @@ const LoginSignup = ({setShowLoginSignup}) => {
         // });
         toast.success(response.data.message);
       } else {
-        console.log(response.data.message, response.data.error);
-          toast.error(response.data.message);
+        // console.log(response.data.message, response.data.error);
+        toast.error(response.data.message);
       }
 
     } catch (error) {
-      currState === "Login" ? console.log("Error creating account : ", error) : console.log("Error logging in: ", error)
+      if (currState === "Sign In"){
+        toast.error('Server Error: Account not logged in!');
+      }
+      else {
+        toast.error('Server Error: Account not created!');
+      }
+      // currState === "Login" ? console.log("Error creating account : ", error) : console.log("Error logging in: ", error)
     }
   }
 
@@ -74,7 +80,7 @@ const LoginSignup = ({setShowLoginSignup}) => {
         onSubmit={onSubmitHandler}
         >
         {
-            currState === "Login" ? <></> : <input type="text" placeholder="Name" className='border text-base'
+            currState === "Sign In" ? <></> : <input type="text" placeholder="Name" className='border text-base'
             name='name' onChange={onChangeHandler} value={data.name}
             />
         }
@@ -84,6 +90,7 @@ const LoginSignup = ({setShowLoginSignup}) => {
           <input type="password" placeholder="Password" className='border text-base'
           name='password' onChange={onChangeHandler} value={data.password}
           />
+          <p></p>
 
         {/* If confirm password is needed then use */}
           {/* {
@@ -100,14 +107,14 @@ const LoginSignup = ({setShowLoginSignup}) => {
           }
           
                    
-          <button type="submit" className='w-full bg-carrot/85 hover:bg-carrot text-white font-semibold'>
+          <button type="submit" className='w-full bg-carrot/85 hover:bg-carrot text-white font-semibold text-xl'>
             {
-              currState === "Sign Up" ? "Create Account" : "Login"
+              currState === "Sign Up" ? "Create Account" : "Sign In"
             } 
           </button>
           {
             currState === "Sign Up" ?
-             <p className='text-base'>Already have an account? <span className='text-carrot cursor-pointer font-semibold' onClick={() => setCurrState("Login")}>Login</span></p> : 
+             <p className='text-base'>Already have an account? <span className='text-carrot cursor-pointer font-semibold' onClick={() => setCurrState("Sign In")}>Login</span></p> : 
              <p className='text-base'>New to Zaayka? <span className='text-carrot cursor-pointer font-semibold' onClick={() => setCurrState("Sign Up")}>Sign Up</span></p>
           }
         </form>

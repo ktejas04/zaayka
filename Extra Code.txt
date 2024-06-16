@@ -1,0 +1,34 @@
+            
+for implementing input number instead of just +/-
+            
+            // const [quantity, setQuantity] = useState(String(cartItems[item._id]));
+
+            // useEffect(() => console.log(quantity),[quantity]);
+
+            // const handleInputChange = (event) => {
+            //   const newValue = parseInt(event.target.value.trim());
+            //   // console.log(newValue);
+            //   if (isNaN(newValue)){
+            //     setQuantity(""); 
+            //     cartItems[item._id]=0;
+            //   }
+            //   else if (newValue<=0){
+            //     console.log(String(newValue));z
+            //     setQuantity(String(newValue));
+            //     cartItems[item._id]=0;
+            //     blurEventHandler(newValue)
+            //   }
+            //   else {
+            //     setQuantity(newValue);
+            //     cartItems[item._id]=newValue; 
+            //   }
+            // };
+
+            // const blurEventHandler = (value) => {
+            //   if (quantity === "" || value<=0) {
+            //     //Set custom message
+            //     alert("Quantity cannot be zero. Setting it to 1.");
+            //     setQuantity(1);
+            //     cartItems[item._id] = 1;
+            //   }
+            // }

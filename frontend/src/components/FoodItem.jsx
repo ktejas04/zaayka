@@ -17,7 +17,7 @@ const FoodItem = ({id,name,description,price,image}) => {
   return (
     <div key={id} className='border mb-2 rounded-3xl max-w-[18vw] cursor-pointer hover:shadow-2xl transition-all [60vh]'>
         <div className='relative'>
-            <img src={url+"/images/"+image} alt={name}
+            <img src={image} alt={name}
             className='rounded-t-3xl'/>
 
             {/* {console.log(itemCount)}*/}

@@ -57,7 +57,7 @@ const List = ({url}) => {
       <div>
         {list.map((item, index) => (
             <div className='flex gap-[9.5rem] items-center text-xl pl-[6.5rem] pr-12 py-6 border-b-2 *:text-center' key={index}>
-                <p><img src={`${url}/images/${item.foodImage}`} alt="food-image"
+                <p><img src={item.image} alt="food-image"
                 className='w-24 h-24 object-cover rounded-full'
                 /></p>
                 <p className='ml-8 w-20'>{item.name}</p>

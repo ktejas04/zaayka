@@ -67,6 +67,7 @@ const Navbar = ({setShowLoginSignup, sectionRefs, footerRef}) => {
         {/* Orange dot */}
         <div className='relative'>
           <Link to="/cart"><img src={assets.cart_icon} alt="cart" width={35} className='opacity-70'/></Link>
+          {/* {console.log(cartItems)} */}
           {
             Object.keys(cartItems).length > 0 &&
             <div className='absolute min-h-2.5 min-w-2.5 bg-carrot top-[-6px] right-[-6px] rounded-xl'></div>
@@ -75,10 +76,10 @@ const Navbar = ({setShowLoginSignup, sectionRefs, footerRef}) => {
 
         {
           !token ? (
-          <button className='bg-ochre/60 hover:bg-ochre px-5 py-1 rounded-3xl text-[1rem] outline-none font-semibold'
+          <button className='bg-carrot/85 hover:bg-carrot text-white px-5 py-1 rounded-3xl text-xl outline-none font-semibold'
             onClick={() => setShowLoginSignup(true)}
           >
-          Sign Up
+          Sign In
           </button> ) : (
           <div className='cursor-pointer'>
           <img src={assets.profile_icon} alt="profile" className='relative'

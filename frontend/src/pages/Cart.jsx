@@ -2,14 +2,14 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Context } from '../context/Context'
 import { assets, coupon_list, socials } from '../assets/frontend_assets/assets'
 import { Link, useNavigate } from 'react-router-dom'
+import useScrollToTop from '../hooks/useScrollToTop'
 
 const Cart = () => {
 
-  const {cartItems, addToCart, removeFromCart,  deleteFromCart, clearCart, totalAmount, platformFee, deliveryCharges, discountRate, setDiscountRate, url, food_list } = useContext(Context)
+  const {cartItems, addToCart, removeFromCart,  deleteFromCart, clearCart, totalAmount, platformFee, deliveryCharges, discountRate, setDiscountRate, food_list, couponCode, setCouponCode } = useContext(Context)
   // const [deliveryCharges, setDeliveryCharges] = useState(0)
   // const [discountRate, setDiscountRate] = useState(5)  //in percentage
-  const [showInputBox, setShowInputBox] = useState(false)
-  const [couponCode, setCouponCode] = useState('');
+  const [showInputBox, setShowInputBox] = useState(false);
   const [buttonClicked, setButtonClicked] = useState(false);
   const inputRef = useRef(null);
 
@@ -34,6 +34,8 @@ const Cart = () => {
       inputRef.current.focus();
     }
   }, [showInputBox]);
+
+  useScrollToTop();
   
   
   return (
@@ -89,61 +91,27 @@ const Cart = () => {
 
           food_list.map((item, index) => {
 
-            // const [quantity, setQuantity] = useState(String(cartItems[item._id]));
-
-            // useEffect(() => console.log(quantity),[quantity]);
-
-            // const handleInputChange = (event) => {
-            //   const newValue = parseInt(event.target.value.trim());
-            //   // console.log(newValue);
-            //   if (isNaN(newValue)){
-            //     setQuantity(""); 
-            //     cartItems[item._id]=0;
-            //   }
-            //   else if (newValue<=0){
-            //     console.log(String(newValue));z
-            //     setQuantity(String(newValue));
-            //     cartItems[item._id]=0;
-            //     blurEventHandler(newValue)
-            //   }
-            //   else {
-            //     setQuantity(newValue);
-            //     cartItems[item._id]=newValue; 
-            //   }
-            // };
-
-            // const blurEventHandler = (value) => {
-            //   if (quantity === "" || value<=0) {
-            //     //Set custom message
-            //     alert("Quantity cannot be zero. Setting it to 1.");
-            //     setQuantity(1);
-            //     cartItems[item._id] = 1;
-            //   }
-            // }
+            
 
             if (item._id in cartItems) { //cart
               return (
                 <div className='flex items-center :border gap-10 text-[18px] my-4 pb-6 border-b-2' key={index}>
-                <p className='mr-16'><img src={url+"/images/"+item.foodImage} alt="item-image" width={70}/></p>
+                <p className='mr-16'><img src={item.image} alt="item-image" width={70}/></p>
                 <p className='ml-6 mr-2 w-52 text-center'>{item.name}</p>
                 <p className='mx-[6.35rem] w-8'>{item.price}</p>
                 <p className='mx-[5.5rem] flex justify-around items-center w-24 cursor-pointer'>
                   <img src={assets.subtract_icon} alt="subtract"
                   className='hover:opacity-50 duration-300'
                   onClick={() => {
-                    // quantity>1 && setQuantity(quantity - 1);
                     removeFromCart(item._id);
                     }} />
                   <span className='bg-white w-8 text-center'
-                    // onChange={handleInputChange}
-                    // onBlur={blurEventHandler}
                   >
                     {cartItems[item._id]}
                   </span>
                   <img src={assets.add_icon} alt="add"
                   className='hover:opacity-50 duration-300'
                   onClick={() => {
-                    // setQuantity(quantity + 1);
                     addToCart(item._id);
                   }} />
                 </p>

@@ -1,7 +1,7 @@
 PROBLEMS
 on reload, sign up showing immediately then page reload 
 change food_list to foodList everywhere
-images in order summary
+images in order summary - done
 
 setData({
        ...data,
@@ -12,21 +12,31 @@ setData(data => ({
         [event.target.name]: event.target.value
     }))
 
-e.preventDefault() in coupon button
+e.preventDefault() in coupon button - done
 
 check fail status in stripe and redirecting to home page
 
-add logic for secured routes(order,etc)
+add logic for secured routes(order,etc) - done
 
-study get/post and update get user order if required
+study get/post and update get user order if required 
 
-add toast for add/remove cart item
+add toast for add/remove cart item - done
 
-add track order for specific order
+add track order for specific order - done
 
 add food tags
 
 responsiveness
+
+on changing route , navigate to top of page - done
+
+add coupon to context - done.
+
+
+
+
+
+
 
 
 NOTES
@@ -157,3 +167,6 @@ in order controller add user order function that can be accessed via api
 create admin order and add its controller to change orderStatus
 
 study refs added for scrolling
+
+
+we have to use cloudinary as vercel's serverless functions do not allow to create directories or save files in a persistent way on the server

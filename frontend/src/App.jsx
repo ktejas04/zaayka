@@ -9,6 +9,9 @@ import LoginSignup from "./components/LoginSignup";
 import { useEffect, useRef, useState } from "react";
 import Verification from "./pages/Verification";
 import MyOrders from "./pages/MyOrders";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import useScrollToTop from './hooks/useScrollToTop';
 
 const App = () => {
 
@@ -31,8 +34,11 @@ const App = () => {
     };
   },[showLoginSignup]);
 
+  useScrollToTop();
+
   return (
     <>
+    <ToastContainer autoClose={1500}/>
     {
       showLoginSignup && <LoginSignup setShowLoginSignup={setShowLoginSignup}/>
         

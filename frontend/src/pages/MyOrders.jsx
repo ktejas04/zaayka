@@ -2,13 +2,14 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Context } from '../context/Context';
 import axios from 'axios';
 import { assets } from '../../../admin/src/assets/assets';
-// import { assets } from '../assets/frontend_assets/assets';
+import useScrollToTop from '../hooks/useScrollToTop';
+import { toast } from 'react-toastify';
+import useAuthRedirect from '../hooks/useAuthRedirect';
 
 const MyOrders = () => {
 
   const [orders, setOrders] = useState([]);
-  const [showSpinner, setShowSpinner] = useState(true);
-  const {url, token, setToken} = useContext(Context);
+  const {url, token} = useContext(Context);
 
   const fetchAllOrders = async () => {
     try { 
@@ -20,32 +21,44 @@ const MyOrders = () => {
         setOrders(response.data.orders);
       }
       else {
-        console.log(response.data);
+        toast.error(response.data);
         console.log("ERROR : ", response.data.error);
         // toast.error(response.data.message);
       }
     } catch (error) {
-      console.log("ERROR : ", error);
+      toast.error("ERROR : ", error);
+    }
+  }
+
+  const trackOrderStatus = async (orderId) => {
+    try { 
+      const response = await axios.post(`${url}/api/v1/order/track`, {orderId}, {headers: {token}});
+      if (response.data.success){
+        const updatedOrder = response.data.order;
+        setOrders(prev => prev.map(order => (order._id === orderId && order.status !== updatedOrder.status) ? updatedOrder : order));
+      }
+      else {
+        toast.error(response.data);
+        console.log("ERROR : ", response.data.error);
+        // toast.error(response.data.message);
+      }
+    } catch (error) {
+      toast.error("ERROR : ", error);
     }
   }
 
   useEffect(() => {
     if (token) {
       fetchAllOrders();
-      setTimeout(() => {
-        setShowSpinner(false);
-      }, 800); // Delay fetching orders by 1.5 seconds
     }
+
     return () => {};
   }, [token]);
 
-  // useEffect(() => {
-  // console.log(token);
 
-  // return ()=>{};
-  // },[token]);
+  const {showMessage, showSpinner} = useAuthRedirect(token, "/");
+  // console.log(token, showMessage, showSpinner);
 
-  // console.log(orders);
 
   const orderStatusColour = (status) => {
     switch (status) {
@@ -60,20 +73,30 @@ const MyOrders = () => {
     }
   }
 
-  return (
-    <div className='px-32 py-16'>
-      {/* Until token is available, display loading animation */}
-      {/* If token is available, fetch data and display orders */}
+  useScrollToTop();
 
-      {
-        showSpinner ? 
-        //Until token is available, display spinner 
-        <div className="min-h-[60vh] grid ">
+  return (
+    <div className='mt-24 px-32 py-16'>
+    
+    {/* Show Authentication Error */}
+    {showMessage && (
+      <div className="mt-[30vh] mb-[20vh] mx-auto bg-red-700 text-white text-2xl font-bold text-center p-4 rounded-md max-w-[40vw]">
+      You are not authenticated, please login!
+      </div>
+    )}
+
+    {/* Until token is available, display loading animation */}
+    {showSpinner && (
+       <div className="min-h-[60vh] grid ">
           <div className='w-24 h-24 place-self-center border-[5px] border-neutral-100 border-t-carrot rounded-full animate-spin'>
           </div>
-        </div> : 
-        // If token is available, fetch data and display orders 
-        <div>
+        </div>
+    )}
+
+    {/* If token is available, fetch data and display orders */}
+    {
+      !showMessage && !showSpinner &&
+      <div>
         <h1 className='text-5xl font-semibold'>My Orders</h1>
         <div className='mt-10 font-medium text-xl'>
           {
@@ -96,15 +119,14 @@ const MyOrders = () => {
                     className={`mr-3 ${orderStatusColour(order.status)}`}
                     >&#x25cf;</span>{order.status}
                   </p>
-                  <button onClick={fetchAllOrders} className='flex gap-2 items-center bg-carrot/85 hover:bg-carrot *:opacity-100 *:hover:opacity-85 duration-300 text-white px-6 py-2 rounded-xl text-xl font-semibold'><img src={assets.location_icon} alt="location" width={18}/><span>Track Order</span></button>
+                  <button onClick={()=>trackOrderStatus(order._id)} className='flex gap-2 items-center bg-carrot/85 hover:bg-carrot *:opacity-100 *:hover:opacity-85 duration-300 text-white px-6 py-2 rounded-xl text-xl font-semibold'><img src={assets.location_icon} alt="location" width={18}/><span>Track Order</span></button>
                 </div>
               )
             })
           }
         </div>
-        </div>
-      }      
-      
+      </div>
+    }      
     </div>
   )
 }

@@ -9,7 +9,7 @@ const placeOrder = async (req, res) => {
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-    const frontend_url = "https://zaayka.vercel.app/";
+    const frontend_url = process.env.FRONTEND_URL;
     // console.log(req.body);
     const {userId, items, amount, address} = req.body;
     
@@ -139,6 +139,26 @@ const listOrders = async (req, res) => {
     }
 }
 
+//Check status for a specific order
+const checkOrderStatus = async (req, res) => {
+    const {orderId} = req.body;
+    try {
+        const order = await Order.findById(orderId);
+        res.json({
+            success: true,
+            message: "Order Status Found",
+            order
+        })
+    } catch (error) {
+        console.log("Error: ", error);
+        res.json({
+            success: false,
+            message: "Error : Order Status Not Found",
+            error: error.message
+        })
+    }
+}
+
 //List all orders(admin)
 const listAllOrders = async (req, res) => {
     try {
@@ -157,7 +177,6 @@ const listAllOrders = async (req, res) => {
         })
     }
 }
-
 
 //Change Order Status
 const updateOrderStatus = async (req, res) => {
@@ -189,6 +208,6 @@ const updateOrderStatus = async (req, res) => {
 }
 
 
-export { placeOrder, verifyOrder, listOrders, listAllOrders, updateOrderStatus }
+export { placeOrder, verifyOrder, listOrders, listAllOrders, updateOrderStatus, checkOrderStatus }
 
 

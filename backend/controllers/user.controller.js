@@ -31,8 +31,17 @@ const registerUser = async (req, res) => {
 
     console.log(req.body);
     const {name, email, password} = req.body;
-    console.log(name, email, password);
+    // console.log(name, email, password);
     try {
+
+        //Checking if all fields have been entered
+
+        if([name, email, password].some(field=>field==="")){
+            return res.json({
+                success: false,
+                message: "All fields are required"
+            })
+        }
 
         // Checking for Existing User
 
@@ -41,7 +50,7 @@ const registerUser = async (req, res) => {
         if (isUserExisting) {
             return res.json({
                 success: false,
-                message: "User Already Exists"
+                message: "User Already Exists. Please Login"
             })
         } 
         
@@ -117,7 +126,7 @@ const loginUser = async (req, res) => {
         if (!isPasswordCorrect) {
             return res.json({
                 success: false,
-                message: "Incorrect Credentials"
+                message: "Invalid Credentials"
             })
         }
 

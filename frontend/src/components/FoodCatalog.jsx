@@ -49,7 +49,7 @@ const FoodCatalog = ({category}) => {
                     name={item.name} 
                     description={item.description} 
                     price={item.price} 
-                    image={item.foodImage} 
+                    image={item.image} 
                     tag={item.tags}
                 />
                 ))

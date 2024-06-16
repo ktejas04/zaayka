@@ -13,8 +13,8 @@ const foodSchema = new Schema({
         type: Number,
         required: true
     },
-    foodImage : {
-        type: String,
+    image : {
+        type: String, //Cloudinary URL
         required: true
     },
     category : {
