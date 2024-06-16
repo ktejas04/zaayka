@@ -77,21 +77,23 @@ const LoginSignup = ({setShowLoginSignup}) => {
           onClick={() => setShowLoginSignup(false)}
           />
         </div>
-        <form action="" className='flex flex-col items-start *:my-4 *:py-2 *:px-4 *:outline-none *:rounded-xl *:w-[20vw]'
+        <form action="" className='flex flex-col items-start'
         onSubmit={onSubmitHandler}
         >
         {
-            currState === "Sign In" ? <></> : <input type="text" placeholder="Name" className='border text-base'
+            currState === "Sign In" ? <></> : <input type="text" placeholder="Name" className='border text-base my-4 py-2 px-4 outline-none rounded-xl w-[20vw]'
             name='name' onChange={onChangeHandler} value={data.name}
             />
         }
-          <input type="email" placeholder="Email" className='border text-base'
+          <input type="email" placeholder="Email" className='border text-base  my-4 py-2 px-4 outline-none rounded-xl w-[20vw]'
           name='email' onChange={onChangeHandler} value={data.email}
           />
-          <input type="password" placeholder="Password" className='border text-base'
+          <input type="password" placeholder="Password" className='border text-base  my-4 py-2 px-4 outline-none rounded-xl w-[20vw]'
           name='password' onChange={onChangeHandler} value={data.password}
           />
-          <p></p>
+          {
+            currState === "Sign In" && <p className=' mb-12 ml-2 text-carrot hover:underline cursor-pointer font-semibold'>Forgot Password?</p>
+          }
 
         {/* If confirm password is needed then use */}
           {/* {
@@ -100,7 +102,7 @@ const LoginSignup = ({setShowLoginSignup}) => {
 
           {
             currState === "Sign Up" ? 
-            <div className='flex gap-4 *:text-sm border-none'>
+            <div className='flex gap-4 *:text-sm border-none my-4 py-2 px-4 outline-none rounded-xl w-[20vw]'>
               <input type="checkbox" name="agreement" className='w-5 accent-carrot cursor-pointer' required/>
               <label htmlFor="agreement" className='*:text-carrot *:cursor-pointer'>I agree to Zaayka's <span>Terms of Service</span>, <span>Privacy Policy</span> and <span>Content Policies</span></label>
             </div> :
@@ -108,15 +110,15 @@ const LoginSignup = ({setShowLoginSignup}) => {
           }
           
                    
-          <button type="submit" className='w-full bg-carrot/85 hover:bg-carrot text-white font-semibold text-xl'>
+          <button type="submit" className='w-full bg-carrot/85 hover:bg-carrot text-white font-semibold text-xl py-2 rounded-xl'>
             {
               currState === "Sign Up" ? "Create Account" : "Sign In"
             } 
           </button>
           {
             currState === "Sign Up" ?
-             <p className='text-base'>Already have an account? <span className='text-carrot cursor-pointer font-semibold' onClick={() => setCurrState("Sign In")}>Login</span></p> : 
-             <p className='text-base'>New to Zaayka? <span className='text-carrot cursor-pointer font-semibold' onClick={() => setCurrState("Sign Up")}>Sign Up</span></p>
+             <p className='text-base  my-4 py-2 px-4 outline-none rounded-xl w-[20vw]'>Already have an account? <span className='text-carrot/85 hover:text-carrot hover:font-bold cursor-pointer font-semibold' onClick={() => setCurrState("Sign In")}>Login</span></p> : 
+             <p className='text-base  my-4 py-2 px-4 outline-none rounded-xl w-[20vw]'>New to Zaayka? <span className='text-carrot/85 hover:text-carrot hover:font-bold cursor-pointer font-semibold' onClick={() => setCurrState("Sign Up")}>Sign Up</span></p>
           }
         </form>
       </div>
