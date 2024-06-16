@@ -14,7 +14,7 @@ const MyOrders = () => {
   const fetchAllOrders = async () => {
     try { 
       const response = await axios.get(`${url}/api/v1/order/list`, {headers: {token}});
-      console.log("DATA :\n ", response.data.orders);
+      // console.log("DATA :\n ", response.data.orders);
       // console.log("JSON DATA :\n ", response.json);
       // console.log("HEADERS :\n ", response.headers);
       if (response.data.success){
