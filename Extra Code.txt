@@ -32,16 +32,3 @@ for implementing input number instead of just +/-
             //     cartItems[item._id] = 1;
             //   }
             // }
-
-
-
-form data in loginSignup - 
-    // const formData = new FormData();
-    // formData.append("name", data.name);
-    // formData.append("email", data.email);
-    // formData.append("password", data.password);
-    // console.log(formData);
-    // console.log("Form Data:", Array.from(formData.entries())); // Logging formData to check contents
-
-    <img src={assets.eye_icon} alt="eye" />
-          {/* <div className='absolute right-0'><img src={assets.eye_icon} alt="eye" /></div> */}

@@ -4,7 +4,6 @@ import bcrypt from "bcrypt";
 import validator from "validator";
 
 
-
 //Creating Token
 
 const createToken = (userId) => {
@@ -148,8 +147,6 @@ const loginUser = async (req, res) => {
         })
     }
 }
-
-// const resetPassword = async (req, res) => {}
 
 
 export { loginUser, registerUser }

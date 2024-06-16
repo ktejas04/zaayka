@@ -2,9 +2,6 @@ import Food from "../models/food.models.js";
 import fs from "fs"
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 
-
-//FOR ADMIN ONLY
-
 //Add Food Item
 
 //Add validation for checking if food item exists, empty fields. Refer youtube

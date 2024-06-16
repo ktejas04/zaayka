@@ -18,8 +18,8 @@ const PlaceOrder = () => {
     address: "",
     state: "",
     city: "",
-    // area: "",
-    // landmark: "",
+    area: "",
+    landmark: "",
     delivery_note: "",
     delivery_time: "",
     payment_method: ""
@@ -60,8 +60,7 @@ const PlaceOrder = () => {
     let orderData = {
       address: data,
       items: orderItems,
-      amount: grandTotal,
-      discount: discountAmount
+      amount: grandTotal
     }
 
     let response = await axios.post(`${url}/api/v1/order/place`, orderData, {headers: {token}})
@@ -149,8 +148,8 @@ const PlaceOrder = () => {
                   <input required type="text" name='state' onChange={onChangeHandler} value={data.state} placeholder='State' className='py-2 px-4 mb-4 rounded-md mr-7 w-[47%]' />
                   <input required type="text" name='city' onChange={onChangeHandler} value={data.city} placeholder='City' className='py-2 px-4 mb-4 rounded-md w-[47%]' />
                 </div>
-                {/* <input required type="text" name='area' onChange={onChangeHandler} value={data.area} placeholder='Area/Street' className='py-2 px-4 mb-4 rounded-md mr-7 w-[47%]' /> */}
-                {/* <input required type="text" name='landmark' onChange={onChangeHandler} value={data.landmark} placeholder='Landmark' className='py-2 px-4 mb-4 rounded-md w-[47%]' /> */}
+                <input required type="text" name='area' onChange={onChangeHandler} value={data.area} placeholder='Area/Street' className='py-2 px-4 mb-4 rounded-md mr-7 w-[47%]' />
+                <input required type="text" name='landmark' onChange={onChangeHandler} value={data.landmark} placeholder='Landmark' className='py-2 px-4 mb-4 rounded-md w-[47%]' />
                 <input required type="text" name='delivery_note' onChange={onChangeHandler} value={data.delivery_note} placeholder='Note for delivery' className='block py-2 px-4 mb-4 rounded-md w-full' />
               </div>
 

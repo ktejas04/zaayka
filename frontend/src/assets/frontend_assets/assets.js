@@ -61,8 +61,6 @@ import parcel_icon from './parcel_icon.png'
 import play_store from './play_store.png'
 import discount_icon from './discount.png'
 import verified_icon from './verified.png'
-import eye_icon from './eye.png'
-import eye_close_icon from './eye_off.png'
 
 
 import linkedin_icon from './linkedin.png'
@@ -95,9 +93,7 @@ export const assets = {
     bag_icon,
     parcel_icon,
     discount_icon,
-    verified_icon,
-    eye_icon,
-    eye_close_icon
+    verified_icon
 }
 
 export const socials = [

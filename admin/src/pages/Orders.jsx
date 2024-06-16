@@ -59,13 +59,12 @@ const Orders = ({url}) => {
                 }
               </p>
               <p className='font-semibold text-xl mb-3'>{order.address.name}</p>
-              <p className='max-w-[10vw]'>{order.address.address+", "}</p>
-              {/* <p>{order.address.landmark+", "}</p> */}
+              <p>{order.address.address+", "}</p>
+              <p>{order.address.landmark+", "}</p>
               <p>{order.address.city + "," + order.address.state}</p>
               <p className='mt-6 text-xl font-semibold'>{order.address.phone}</p>
             </div>
             <p className='text-2xl font-semibold mt-2'>&#8377;{order.amount}</p>
-            <p className='text-2xl font-semibold mt-2 w-14'>{order.address.payment_method.toUpperCase()}</p>
             <select name="status" className='py-2 px-4 rounded-md border-2 border-dark-carrot bg-carrot/85 hover:bg-carrot cursor-pointer *:hover:cursor-pointer text-white font-bold' onChange={(event) => statusHandler(event, order._id)} value={order.status}>
               <option value="Processing">Processing</option>
               <option value="Out for Delivery">Out for Delivery</option>
