@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { address_list, assets, coupon_list} from '../assets/frontend_assets/assets'
 import { Context } from '../context/Context';
 import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import useScrollToTop from '../hooks/useScrollToTop';
 import useAuthRedirect from '../hooks/useAuthRedirect';
-import { useNavigate } from 'react-router-dom';
 
 const PlaceOrder = () => {
   
