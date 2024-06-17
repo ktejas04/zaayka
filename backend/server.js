@@ -13,7 +13,7 @@
 
   // App Configuration
   const app = express();
-  const PORT = process.env.PORT || 3000;
+  const PORT = process.env.PORT || 8000;
 
   // console.log(process.env.CORS_ORIGIN_FRONTEND, process.env.CORS_ORIGIN_ADMIN);
   // CORS Configuration
