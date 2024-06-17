@@ -32,3 +32,11 @@ for implementing input number instead of just +/-
             //     cartItems[item._id] = 1;
             //   }
             // }
+
+In Login SIgnup while sending data,
+            // const formData = new FormData();
+            // formData.append("name", data.name);
+            // formData.append("email", data.email);
+            // formData.append("password", data.password);
+            // console.log(formData);
+            // console.log("Form Data:", Array.from(formData.entries())); // Logging formData to check contents
