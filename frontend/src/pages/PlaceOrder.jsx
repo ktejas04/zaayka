@@ -68,8 +68,8 @@ const PlaceOrder = () => {
     // console.log(response);
     if (response.data.success) {
       const {session} = response.data;
-      console.log(session.url);
-      navigate(session.url);
+      // console.log(session.url);
+      window.location.replace(session.url);
     }
     else {
       console.log(response.data.error);

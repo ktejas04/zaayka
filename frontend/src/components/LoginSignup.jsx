@@ -32,22 +32,46 @@ const LoginSignup = ({setShowLoginSignup}) => {
    
     try {
       const response = await axios.post(`${url}/api/v1/user/${action}`, data);
-      if (response.data.success) {
-        toast.success(response.data.message);
-        console.log(response.data);
-        setToken(response.data.token);
-        setName(response.data.loggedInUser.name);
-        localStorage.setItem("token", response.data.token);
-        setShowLoginSignup(false);
-        // window.location.reload();
-        // setData({
-        //     name: "",
-        //     email: "",
-        //     password: ""
-        // });
-      } else {
-        // console.log(response.data.message, response.data.error);
-        toast.error(response.data.message);
+      let newResponse;
+      if (action === "register"){
+         console.log(response.data);
+         newResponse = await axios.post(`${url}/api/v1/user/login`, data);
+         if (newResponse.data.success) {
+          toast.success(response.data.message);
+          console.log(newResponse.data);
+          setToken(newResponse.data.token);
+          setName(newResponse.data.loggedInUser.name);
+          localStorage.setItem("token", newResponse.data.token);
+          setShowLoginSignup(false);
+          // window.location.reload();
+          // setData({
+          //     name: "",
+          //     email: "",
+          //     password: ""
+          // });
+        } else {
+          // console.log(response.data.message, response.data.error);
+          toast.error(response.data.message);
+        }
+      }
+      else {
+        if (response.data.success) {
+          toast.success(response.data.message);
+          console.log(response.data);
+          setToken(response.data.token);
+          setName(response.data.loggedInUser.name);
+          localStorage.setItem("token", response.data.token);
+          setShowLoginSignup(false);
+          // window.location.reload();
+          // setData({
+          //     name: "",
+          //     email: "",
+          //     password: ""
+          // });
+        } else {
+          // console.log(response.data.message, response.data.error);
+          toast.error(response.data.message);
+        }
       }
 
     } catch (error) {
