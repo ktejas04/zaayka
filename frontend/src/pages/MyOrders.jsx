@@ -5,14 +5,13 @@ import { assets } from '../../../admin/src/assets/assets';
 import useScrollToTop from '../hooks/useScrollToTop';
 import { toast } from 'react-toastify';
 import useAuthRedirect from '../hooks/useAuthRedirect';
-import { useNavigate } from 'react-router-dom';
+
 
 const MyOrders = () => {
 
   const [orders, setOrders] = useState([]);
   const {url, token} = useContext(Context);
 
-  const navigate = useNavigate();
 
   const fetchAllOrders = async () => {
     try { 
@@ -100,10 +99,7 @@ const MyOrders = () => {
     {
       !showMessage && !showSpinner &&
       <div>
-        <div className='flex justify-between'>
-          <h1 className='text-5xl font-semibold'>My Orders</h1>
-          <button className='border' onClick={()=>navigate("/check-verify")}>Navigate</button>
-        </div>
+        <h1 className='text-5xl font-semibold'>My Orders</h1>
         
         <div className='mt-10 font-medium text-xl'>
           {

@@ -5,10 +5,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import useScrollToTop from '../hooks/useScrollToTop';
 import useAuthRedirect from '../hooks/useAuthRedirect';
+import { useNavigate } from 'react-router-dom';
 
 const PlaceOrder = () => {
-
-
+  
+  
   const {cartItems,totalAmount, platformFee, deliveryCharges, discountRate, setDiscountRate, token, food_list, url, couponCode, setCouponCode} = useContext(Context)
   const [showInputBox, setShowInputBox] = useState(false)
   const [buttonClicked, setButtonClicked] = useState(false);
@@ -24,8 +25,9 @@ const PlaceOrder = () => {
     delivery_time: "",
     payment_method: ""
   })
-
+  
   const inputRef = useRef(null);
+  const navigate = useNavigate();
 
   const discountAmount = discountRate * totalAmount / 100;
   const grandTotal = totalAmount + platformFee - discountAmount + deliveryCharges;
@@ -68,7 +70,7 @@ const PlaceOrder = () => {
     if (response.data.success) {
       const {session} = response.data;
       console.log(session.url);
-      window.location.replace(session.url);
+      navigate(session.url);
     }
     else {
       console.log(response.data.error);

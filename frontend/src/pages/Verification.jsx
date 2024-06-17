@@ -9,7 +9,7 @@ const Verification = () => {
     const success = searchParams.get('success');
     const orderId = searchParams.get('orderId');
     console.log(success, orderId);
-    const {url} = useContext(Context)
+    const {url} = useContext(Context);
     const navigate = useNavigate();
 
     const verifyPayment = async () => {

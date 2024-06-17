@@ -50,7 +50,6 @@ const App = () => {
         <Route path="/order" element={<PlaceOrder />} />
         <Route path="/verify" element={<Verification />} />
         <Route path="/my-orders" element={<MyOrders />} />
-        <Route path="/check-verify" element={<Verification />} />
       </Routes>
       <Footer ref={footerRef}/>    
     </>
