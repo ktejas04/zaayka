@@ -8,7 +8,7 @@ const ContextProvider = (props) => {
 
     const [cartItems, setCartItems] = useState({});
     const [discountRate, setDiscountRate] = useState(0)
-    const url = 'https://zaayka-backend.vercel.app';
+    const url = 'https://server-zaayka.onrender.com';
     // const url = 'http://localhost:8000';
     const [token, setToken] = useState("")
     const [food_list, setFoodList] = useState([]);

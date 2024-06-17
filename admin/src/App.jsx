@@ -12,7 +12,7 @@ import List from './pages/List';
 import Error from './components/Error';
 
 const App = () => {
-  const url = 'http://localhost:8000';
+  const url = 'https://server-zaayka.onrender.com';
   const [allowLogin, setAllowLogin] = useState(() => {
     // Retrieve the initial state from local storage
     return localStorage.getItem('allowLogin') === 'true';
