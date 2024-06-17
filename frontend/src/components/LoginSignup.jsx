@@ -51,12 +51,13 @@ const LoginSignup = ({setShowLoginSignup}) => {
       }
 
     } catch (error) {
-      if (currState === "Sign In"){
-        toast.error('Server Error: Account not logged in!');
-      }
-      else {
-        toast.error('Server Error: Account not created!');
-      }
+      console.log(error);
+      // if (currState === "Sign In"){
+      //   // toast.error('Server Error: Account not logged in!');
+      // }
+      // else {
+      //   toast.error('Server Error: Account not created!');
+      // }
       // currState === "Login" ? console.log("Error creating account : ", error) : console.log("Error logging in: ", error)
     }
   }
