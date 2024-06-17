@@ -33,6 +33,7 @@ const LoginSignup = ({setShowLoginSignup}) => {
     try {
       const response = await axios.post(`${url}/api/v1/user/${action}`, data);
       if (response.data.success) {
+        toast.success(response.data.message);
         console.log(response.data);
         setToken(response.data.token);
         setName(response.data.user.name);
@@ -44,7 +45,6 @@ const LoginSignup = ({setShowLoginSignup}) => {
         //     email: "",
         //     password: ""
         // });
-        toast.success(response.data.message);
       } else {
         // console.log(response.data.message, response.data.error);
         toast.error(response.data.message);
