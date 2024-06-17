@@ -36,7 +36,7 @@ const LoginSignup = ({setShowLoginSignup}) => {
         toast.success(response.data.message);
         console.log(response.data);
         setToken(response.data.token);
-        setName(response.data.user.name);
+        setName(response.data.loggedInUser.name);
         localStorage.setItem("token", response.data.token);
         setShowLoginSignup(false);
         // window.location.reload();
@@ -52,12 +52,12 @@ const LoginSignup = ({setShowLoginSignup}) => {
 
     } catch (error) {
       console.log(error);
-      // if (currState === "Sign In"){
-      //   // toast.error('Server Error: Account not logged in!');
-      // }
-      // else {
-      //   toast.error('Server Error: Account not created!');
-      // }
+      if (currState === "Sign In"){
+        toast.error('Server Error: Account not logged in!');
+      }
+      else {
+        toast.error('Server Error: Account not created!');
+      }
       // currState === "Login" ? console.log("Error creating account : ", error) : console.log("Error logging in: ", error)
     }
   }
