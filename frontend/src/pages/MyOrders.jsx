@@ -9,6 +9,9 @@ import useAuthRedirect from '../hooks/useAuthRedirect';
 
 const MyOrders = () => {
 
+  console.log("My Orders component loaded");
+
+
   const [orders, setOrders] = useState([]);
   const {url, token} = useContext(Context);
 
