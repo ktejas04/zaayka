@@ -106,7 +106,7 @@ const LoginSignup = ({setShowLoginSignup}) => {
 
   return (
     <div className='absolute z-10 w-full h-full -my-20 overflow-hidden bg-dark-coffee/80'>
-       <div className='absolute top-44 left-[35%] py-8 px-10 animate-fade-in-quick bg-white border w-fit my-5 rounded-xl hover:shadow-xl'>
+       <div className='absolute top-12 left-[35%] py-8 px-10 animate-fade-in-quick bg-white border w-fit my-5 rounded-xl hover:shadow-xl'>
         <div className='flex justify-between items-center mb-5'>
           <h1 className='font-semibold text-3xl'>{currState}</h1>
           <img src={assets.close_icon} alt="cross" 
