@@ -47,7 +47,7 @@ const FoodItem = ({id,name,description,price,image}) => {
 
         <div className='flex justify-between items-center gap-3 mb-5'>
             <p className='text-coffee w-[70%]'>{description}</p>
-            <p className='bg-parrot-green hover:bg-dark-parrot-green py-1 px-2 rounded-3xl text-[9px] text-white font-semibold'>{time} mins</p>
+            <p className='bg-parrot-green hover:bg-dark-parrot-green py-1 px-2 rounded-3xl text-[10px] text-white font-semibold'>{time} mins</p>
         </div>
 
         <div className='flex justify-between items-center'>
