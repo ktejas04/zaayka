@@ -8,7 +8,7 @@ import useAuthRedirect from '../hooks/useAuthRedirect';
 
 const PlaceOrder = () => {
   
-  console.log("PlaceOrder component loaded");
+  // console.log("PlaceOrder component loaded");
 
   
   const {cartItems,totalAmount, platformFee, deliveryCharges, discountRate, setDiscountRate, token, food_list, url, couponCode, setCouponCode} = useContext(Context)

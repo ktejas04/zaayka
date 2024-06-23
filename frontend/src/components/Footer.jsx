@@ -81,10 +81,10 @@ const Footer = forwardRef((props, ref) => {
                         <input type="text" placeholder='Enter email address' 
                         className='p-4 outline-none text-[18px] w-[16vw]'
                         />
-                    </form>
-                    <button className='bg-carrot hover:bg-carrot/85 border px-8 py-4 rounded-full text-xl outline-none font-semibold'>
+                    <button className='bg-carrot/85 hover:bg-carrot text-white duration-300 border px-8 py-4 rounded-full text-xl outline-none font-semibold ml-6'>
                         Subscribe
                     </button>
+                    </form>
                 </div>
             </div>
 

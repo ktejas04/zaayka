@@ -106,7 +106,7 @@ const LoginSignup = ({setShowLoginSignup}) => {
 
   return (
     <div className='absolute z-10 w-full h-full -my-20 overflow-hidden bg-dark-coffee/80'>
-       <div className='absolute top-44 left-[35%] py-8 px-10 animate-fade-in-quick bg-white border w-fit my-5 rounded-xl hover:shadow-xl'>
+       <div className='absolute top-2 xl:top-12 left-[25%] lg:left-[30%] xl:left-[30%] py-4 xl:py-8 px-10 animate-fade-in-quick bg-white border my-5 rounded-xl hover:shadow-xl md:w-[50vw] lg:w-[35vw]'>
         <div className='flex justify-between items-center mb-5'>
           <h1 className='font-semibold text-3xl'>{currState}</h1>
           <img src={assets.close_icon} alt="cross" 
@@ -121,7 +121,7 @@ const LoginSignup = ({setShowLoginSignup}) => {
 
         {
           showForgotPassword ? (
-            <form className='max-w-[20vw] mt-12' onSubmit={passwordResetHandler}>
+            <form className='md:w-[50vw] lg:max-w-[20vw] mt-12 w-full' onSubmit={passwordResetHandler}>
               <p className='mb-8'>Enter your registered email and we will send you a link to reset your password.</p>
               <label htmlFor="email" className='font-semibold'>Email</label>
               <input type="email" placeholder="Email" className='border text-base my-4 py-2 px-4 outline-none rounded-xl w-[20vw]'
@@ -133,20 +133,20 @@ const LoginSignup = ({setShowLoginSignup}) => {
               </button>
             </form>
           ) : (
-            <form className='flex flex-col items-start' onSubmit={onSubmitHandler} >
+            <form className='flex flex-col items-start lg:max-w-[30vw]' onSubmit={onSubmitHandler} >
               {
-                  currState === "Sign In" ? <></> : <input type="text" placeholder="Name" className='border text-base my-4 py-2 px-4 outline-none rounded-xl w-[20vw]'
+                  currState === "Sign In" ? <></> : <input type="text" placeholder="Name" className='border text-base mt-3 xl:my-4 py-2 px-4 outline-none rounded-xl xl:w-[20vw] w-full'
                   name='name' onChange={onChangeHandler} value={data.name}
                   />
               }
-              <input type="email" placeholder="Email" className='border text-base my-4 py-2 px-4 outline-none rounded-xl w-[20vw]'
+              <input type="email" placeholder="Email" className='border text-base mt-3 xl:my-4 py-2 px-4 outline-none rounded-xl xl:w-[20vw] w-full'
               name='email' onChange={onChangeHandler} value={data.email}
               />
-              <div className='w-[20vw] my-4 outline-none relative'>
+              <div className='w-full xl:w-[20vw] my-4 outline-none relative'>
               <img src={showPassword ? assets.eye_close_icon : assets.eye_open_icon} alt="eye" className='absolute right-4 top-2.5 cursor-pointer hover:opacity-70 duration-300'
               onClick={() => setShowPassword(prev => !prev)}
               />
-              <input type={`${showPassword ? "text" : "password"}`} placeholder="Password" className='border text-base w-full py-2 px-4 rounded-xl'
+              <input type={`${showPassword ? "text" : "password"}`} placeholder="Password" className='border text-base py-2 px-4 rounded-xl w-full'
               name='password' onChange={onChangeHandler} value={data.password}
               />
               </div>
@@ -163,9 +163,9 @@ const LoginSignup = ({setShowLoginSignup}) => {
 
               {
                 currState === "Sign Up" ? 
-                <div className='flex gap-4 *:text-sm border-none my-4 py-2 px-4 outline-none rounded-xl w-[20vw]'>
+                <div className='flex gap-4 *:text-sm border-none my-2 xl:my-4 py-2 px-4 outline-none rounded-xl xl:w-[20vw]'>
                   <input type="checkbox" name="agreement" className='w-5 accent-carrot cursor-pointer' required/>
-                  <label htmlFor="agreement" className='*:text-carrot *:cursor-pointer'>I agree to Zaayka's <span>Terms of Service</span>, <span>Privacy Policy</span> and <span>Content Policies</span></label>
+                  <label htmlFor="agreement" className='*:text-carrot *:cursor-pointer'>I agree to Zaayka&apos;s <span>Terms of Service</span>, <span>Privacy Policy</span> and <span>Content Policies</span></label>
                 </div> :
                 <></>
               }
@@ -178,8 +178,8 @@ const LoginSignup = ({setShowLoginSignup}) => {
               </button>
               {
                 currState === "Sign Up" ?
-                <p className='text-base  my-4 py-2 px-4 outline-none rounded-xl w-[20vw]'>Already have an account? <span className='text-carrot/85 hover:text-carrot hover:font-bold cursor-pointer font-semibold' onClick={() => setCurrState("Sign In")}>Login</span></p> : 
-                <p className='text-base  my-4 py-2 px-4 outline-none rounded-xl w-[20vw]'>New to Zaayka? <span className='text-carrot/85 hover:text-carrot hover:font-bold cursor-pointer font-semibold' onClick={() => setCurrState("Sign Up")}>Sign Up</span></p>
+                <p className='text-base  mt-4 py-2 px-4 outline-none rounded-xl xl:w-[20vw]'>Already have an account? <span className='text-carrot/85 hover:text-carrot hover:font-bold cursor-pointer font-semibold' onClick={() => setCurrState("Sign In")}>Login</span></p> : 
+                <p className='text-base  mt-4 py-2 px-4 outline-none rounded-xl xl:w-[20vw]'>New to Zaayka? <span className='text-carrot/85 hover:text-carrot hover:font-bold cursor-pointer font-semibold' onClick={() => setCurrState("Sign Up")}>Sign Up</span></p>
               }
             </form> )         
         }

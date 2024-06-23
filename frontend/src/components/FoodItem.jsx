@@ -28,7 +28,7 @@ const FoodItem = ({id,name,description,price,image}) => {
                 !cartItems[id]?
                 <img src={assets.add_icon_white} alt="icon"
                 onClick={() => addToCart(id)} 
-                className='absolute w-10 bottom-2 right-2 opacity-75 hover:opacity-100 rounded-full'
+                className='absolute w-10 bottom-2 right-2 opacity-85 hover:opacity-100 rounded-full duration-300'
                 /> : <div className='absolute bottom-2 right-2 bg-white rounded-3xl p-1 mt-3 ml-5 flex gap-3 items-center'>
                         <img onClick={() => removeFromCart(id)} src={assets.remove_icon_red} alt="red" />
                         {/* <p>{itemCount}</p> */}
@@ -47,7 +47,7 @@ const FoodItem = ({id,name,description,price,image}) => {
 
         <div className='flex justify-between items-center gap-3 mb-5'>
             <p className='text-coffee w-[70%]'>{description}</p>
-            <p className='bg-parrot-green hover:bg-dark-parrot-green py-1 px-2 rounded-3xl text-sm text-white font-semibold'>{time} mins</p>
+            <p className='bg-parrot-green hover:bg-dark-parrot-green py-1 px-2 rounded-3xl text-xs text-white font-semibold'>{time} mins</p>
         </div>
 
         <div className='flex justify-between items-center'>

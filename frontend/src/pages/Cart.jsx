@@ -6,7 +6,7 @@ import useScrollToTop from '../hooks/useScrollToTop'
 
 const Cart = () => {
 
-  console.log("Cart component loaded");
+  // console.log("Cart component loaded");
 
   const {cartItems, addToCart, removeFromCart,  deleteFromCart, clearCart, totalAmount, platformFee, deliveryCharges, discountRate, setDiscountRate, food_list, couponCode, setCouponCode } = useContext(Context)
   // const [deliveryCharges, setDeliveryCharges] = useState(0)

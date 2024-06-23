@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const Verification = () => {
 
-  console.log("Verification component loaded");
+  // console.log("Verification component loaded");
 
 
     const [searchParams, setSearchParams] = useSearchParams();
