@@ -49,7 +49,7 @@ const App = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/order" element={<PlaceOrder />} />
         <Route path="/verify" element={<Verification />} />
-        <Route path="/my-orders" element={<MyOrders />} />
+        <Route path="/my-orders" element={<MyOrders setShowLoginSignup={setShowLoginSignup}/>} />
       </Routes>
       <Footer ref={footerRef}/>    
     </>

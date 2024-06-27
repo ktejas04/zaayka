@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import useAuthRedirect from '../hooks/useAuthRedirect';
 
 
-const MyOrders = () => {
+const MyOrders = ({setShowLoginSignup}) => {
 
   // console.log("My Orders component loaded");
 
@@ -60,6 +60,10 @@ const MyOrders = () => {
     return () => {};
   }, [token]);
 
+  useEffect(() => {
+    setShowLoginSignup(false);
+  },[]);
+
 
   const {showMessage, showSpinner} = useAuthRedirect(token, "/");
   // console.log(token, showMessage, showSpinner);
@@ -81,7 +85,7 @@ const MyOrders = () => {
   useScrollToTop();
 
   return (
-    <div className='mt-24 px-32 py-16'>
+    <div className='mt-24 px-6 sm:px-12 md:px-16 lg:px-14 xl:px-32 py-16'>
     
     {/* Show Authentication Error */}
     {showMessage && (
@@ -109,23 +113,23 @@ const MyOrders = () => {
             orders.map(order => {
               // console.log(order);
               return (
-                <div key={order._id} className='flex justify-around items-center border rounded-xl bg-neutral-100 border-neutral-400 py-8 px-6 mb-8'>
+                <div key={order._id} className='grid grid-cols-3 gap-10 place-items-center lg:flex lg:justify-around lg:items-center border rounded-xl bg-neutral-100 border-neutral-400 py-8 px-6 mb-8'>
                   <img src={assets.parcel_icon} alt="parcel" />
-                  <p className='flex flex-col items-center w-[12vw]'>
+                  <p className='flex flex-col items-center w-44'>
                     {
                       order.items.map((foodItem,index) => (
-                        <span key={index}>{foodItem.name} x {foodItem.quantity}</span> //key={foodItem._id}
+                        <span key={index} className='text-xs xs:text-sm text-center'>{foodItem.name} x {foodItem.quantity}</span> //key={foodItem._id}
                       ))
                     }
                   </p>
-                  <p className='w-16'>&#8377;{order.amount}</p>
-                  <p className='ml-10 w-28'>Items : {order.items.length}</p>
-                  <p className='font-bold text-neutral-600 w-[10vw]'>
+                  <p className='w-24 text-sm xs:text-base xl:text-xl ml-12 xs:ml-6 lg:ml-0'>&#8377;{order.amount}</p>
+                  <p className=' w-24 text-sm xs:text-base xl:text-xl'>Items : {order.items.length}</p>
+                  <p className='font-bold text-neutral-600 w-32 text-sm xs:text-base xl:text-xl'>
                     <span
                     className={`mr-3 ${orderStatusColour(order.status)}`}
                     >&#x25cf;</span>{order.status}
                   </p>
-                  <button onClick={()=>trackOrderStatus(order._id)} className='flex gap-2 items-center bg-carrot/85 hover:bg-carrot *:opacity-100 *:hover:opacity-85 duration-300 text-white px-6 py-2 rounded-xl text-xl font-semibold'><img src={assets.location_icon} alt="location" width={18}/><span>Track Order</span></button>
+                  <button onClick={()=>trackOrderStatus(order._id)} className='flex gap-0.5 xs:gap-2 items-center bg-carrot/85 hover:bg-carrot *:opacity-100 *:hover:opacity-85 duration-300 text-white px-2 lg:px-5 py-2 rounded-xl text-xs xs:text-sm lg:text-base xl:text-xl font-semibold lg:w-44'><img src={assets.location_icon} alt="location" width={18} className=' w-3 lg:w-[18px]'/><span className='hidden xs:block'>Track Order</span><span className='block xs:hidden'>Track</span></button>
                 </div>
               )
             })

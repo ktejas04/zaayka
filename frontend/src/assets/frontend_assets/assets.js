@@ -3,6 +3,16 @@ import empty_cart_icon from './empty_cart.png'
 import logo from './logo.png'
 import header_img from './header_img.png'
 import search_icon from './search_icon.png'
+import arrow_left from './arrow-left.png'
+import arrow_left_white from './arrow_left_white.png'
+import arrow_right from './arrow-right.png'
+import menu_open from './menu_open.png'
+import menu_close from './menu_close.png'
+import about from './about.png'
+import menu from './menu.png'
+import app from './app.png'
+import contact from './contact.png'
+import user from './user.png'
 import menu_1 from './menu_1.png'
 import menu_2 from './menu_2.png'
 import menu_3 from './menu_3.png'
@@ -56,7 +66,9 @@ import selector_icon from './selector_icon.png'
 import rating_starts from './rating_starts.png'
 import profile_icon from './profile_icon.png'
 import bag_icon from './bag_icon.png'
+import bag_icon_black from './bag_icon_black.png'
 import logout_icon from './logout_icon.png'
+import logout_icon_black from './logout_icon_black.png'
 import parcel_icon from './parcel_icon.png'
 import play_store from './play_store.png'
 import discount_icon from './discount.png'
@@ -73,10 +85,25 @@ import instagram_icon from './instagram.png'
 import gmail_icon from './gmail.png'
 import location_icon from './location.png'
 
+export const navbar = {
+    about,
+    menu,
+    app,
+    contact,
+    user,
+    bag_icon_black,
+    logout_icon_black
+}
 
 export const assets = {
+    arrow_left,
+    arrow_right,
+    arrow_left_white,
+    menu_open,
+    menu_close,
     logo,
     cart_icon,
+    location_icon,
     empty_cart_icon,
     header_img,
     search_icon,
@@ -101,13 +128,36 @@ export const assets = {
 }
 
 export const socials = [
-    linkedin_icon,
-    facebook_icon,
-    x_icon,
-    youtube_icon,
-    instagram_icon,
-    gmail_icon,
-    location_icon
+    {
+        name: "linkedin",
+        link: "https://www.linkedin.com/",
+        icon: linkedin_icon
+    },
+    {
+        name: "facebook",
+        link: "https://www.facebook.com/",
+        icon: facebook_icon
+    },
+    {
+        name: "x",
+        link: "https://x.com/",
+        icon: x_icon
+    },
+    {
+        name: "youtube",
+        link: "https://www.youtube.com/",
+        icon: youtube_icon
+    },
+    {
+        name: "instagram",
+        link: "https://www.instagram.com/",
+        icon: instagram_icon
+    },
+    {
+        name: "gmail",
+        link: "https://mail.google.com/",
+        icon: gmail_icon
+    },
 ]
 
 export const menu_list = [
@@ -480,3 +530,30 @@ export const coupon_list = [  //Add count of coupon
     }
 
 ]
+
+export const links = [
+    {
+        title: "Company",
+        items: ["About Us", "Our Team", "Blog", "Report Fraud"]
+    },
+    {
+        title: "Our Services",
+        items: ["Food Delivery", "Catering Services", "Party Orders", "Subscription Plans"]
+    },
+    {
+        title: "Community",
+        items: ["Events & Promotions", "Partner Restaurants", "Customer Stories", "Charitable Initiatives"]
+    },
+    {
+        title: "Resources",
+        items: ["FAQs", "Delivery Information", "How It Works", "Nutrition Information"]
+    },
+    {
+        title: "Contact Us",
+        items: ["Help & Support", "Partner with us", "Ride with us", "Feedback"]
+    },
+    {
+        title: "Learn More",
+        items: ["Privacy Policy", "Security", "Terms", "Sitemap"]
+    }
+];

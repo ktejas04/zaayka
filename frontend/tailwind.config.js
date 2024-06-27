@@ -6,6 +6,8 @@ export default {
   ],
   theme: {
     screens: {
+      'xs': '550px',
+      // => @media (min-width: 450px) { ... }
       'sm': '640px',
       // => @media (min-width: 640px) { ... }
 
@@ -16,10 +18,10 @@ export default {
       // => @media (min-width: 1024px) { ... }
 
       'xl': '1300px',
-      // => @media (min-width: 1275px) { ... }
+      // => @media (min-width: 1300px) { ... }
 
-      '2xl': '1565px',
-      // => @media (min-width: 1565px) { ... }
+      '2xl': '1536px',
+      // => @media (min-width: 1536px) { ... }
 
       '3xl': '1920px',
       // => @media (min-width: 1920px) { ... }

@@ -8,23 +8,23 @@ const FoodCatalog = ({category}) => {
 
     // console.log(food_list);
 
-    const shuffleArray = (array) => {
-        const shuffledArray = [...array];
-        for (let i = shuffledArray.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-        }
-        return shuffledArray;
-    }
+    // const shuffleArray = (array) => {
+    //     const shuffledArray = [...array];
+    //     for (let i = shuffledArray.length - 1; i > 0; i--) {
+    //         const j = Math.floor(Math.random() * (i + 1));
+    //         [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    //     }
+    //     return shuffledArray;
+    // }
     
         
 
   return (
-    <div className='px-32'>
-        <h2 className='text-dark-coffee text-4xl font-bold my-16'> 
+    <div className='px-6 sm:px-12 md:px-16 lg:px-14 xl:px-32'>
+        <h2 className='text-dark-coffee text-4xl font-bold my-16 py-2 text-center lg:text-left'> 
             Best Bites
         </h2>
-        <div className='grid place-items-center lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-8'>
+        <div className='grid place-items-center xl:grid-cols-4 lg:grid-cols-3 xs:grid-cols-2 grid-cols-1 md:gap-4 lg:gap-6 xl:gap-8'>
             
             {/* {
                 food_list && 
@@ -50,7 +50,7 @@ const FoodCatalog = ({category}) => {
                     description={item.description} 
                     price={item.price} 
                     image={item.image} 
-                    tag={item.tags}
+                    // tag={item.tags}
                 />
                 ))
             }

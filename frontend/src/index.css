@@ -6,6 +6,9 @@
 
 * {
     font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 
@@ -13,4 +16,26 @@
     .list-item {
         @apply hover:text-black/70 cursor-pointer transition-all duration-300;
     }
+
+    .hide-scroll::-webkit-scrollbar {
+        @apply w-0
+    }
+}
+
+@layer utilities {
+    .ham-item {
+        @apply duration-300 opacity-100 bg-black/10 hover:bg-black/20 backdrop-filter backdrop-blur-sm rounded-xl w-full py-2 px-4 flex items-center justify-start gap-4;
+    }
+
+    .mobile-nav-item {
+        @apply my-6 cursor-pointer hover:bg-black/25 backdrop-filter backdrop-blur-sm rounded-full p-3;
+    }
+}
+
+.hero {
+    background-image: url("../src/assets/hero_food.jpg");
+    background-position: left;
+    background-size: cover;
+       
+       
 }

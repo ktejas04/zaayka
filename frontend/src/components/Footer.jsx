@@ -1,108 +1,65 @@
 import React, { forwardRef } from 'react'
-import { assets, socials } from '../assets/frontend_assets/assets'
+import { assets, links, socials } from '../assets/frontend_assets/assets'
 import logo from "../assets/zaayka.svg"
 
 const Footer = forwardRef((props, ref) => {
   return (
     <div className='mt-28' ref={ref}>
-        <div className='bg-zinc-100 pt-10 px-32'>
-            <div className='pb-8 mb-10 flex items-start justify-around border-b-2 border-coffee'>
-                {/* Icon and Name */}
-                <div>
-                    <img src={logo} alt="logo" 
-                    width={200}
-                    className='p-4 cursor-pointer'
+        <div className='bg-zinc-100 pt-10 px-6 sm:px-12 md:px-16 lg:px-14 xl:px-32 text-center'>
+            {/* Newsletter */}
+            <div className='my-10 flex flex-col xs:flex-row justify-around md:items-center gap-4'>
+                <div className='xs:w-6/12'>
+                    <p className='text-xl md:text-[22px] lg:text-2xl pb-2 font-semibold'>Subscribe to our Newsletter</p>
+                    <p className='text-sm md:text-base'>Get updates regarding offers, openings and more!</p>
+                </div>
+                <form className='xs:w-6/12 flex items-center justify-center xs:flex-col md:flex-row gap-3'>
+                    <input type="text" placeholder='Enter email address' 
+                    className='p-4 outline-none rounded-md xs:w-9/12 lg:w-2/5 xl:w-1/2 text-sm md:text-base'
                     />
-                </div>
-
-                {/* Links */}
-                <div className='grid grid-cols-3 gap-10 ml-[20rem]'>
-                    <div>
-                        <h1 className="text-[19px] uppercase tracking-tight mb-2 font-semibold">Company</h1>
-                        <ul className="*:text-[15px]">
-                            <li className="cursor-pointer hover:text-black/60">About Us</li>
-                            <li className="cursor-pointer hover:text-black/60">Our Team</li>
-                            <li className="cursor-pointer hover:text-black/60">Blog</li>
-                            <li className="cursor-pointer hover:text-black/60">Report Fraud</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h1 className="text-[19px] uppercase tracking-tight mb-2 font-semibold">Our Services</h1>
-                        <ul className="*:text-[15px]">
-                            <li className="cursor-pointer hover:text-black/60">Food Delivery</li>
-                            <li className="cursor-pointer hover:text-black/60">Catering Services</li>
-                            <li className="cursor-pointer hover:text-black/60">Party Orders</li>
-                            <li className="cursor-pointer hover:text-black/60">Subscription Plans</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h1 className="text-[19px] uppercase tracking-tight mb-2 font-semibold">Community</h1>
-                        <ul className="*:text-[15px]">
-                            <li className="cursor-pointer hover:text-black/60">Events & Promotions</li>
-                            <li className="cursor-pointer hover:text-black/60">Partner Restaurants</li>
-                            <li className="cursor-pointer hover:text-black/60">Customer Stories</li>
-                            <li className="cursor-pointer hover:text-black/60">Charitable Initiatives</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h1 className="text-[19px] uppercase tracking-tight mb-2 font-semibold">Resources</h1>
-                        <ul className="*:text-[15px]">
-                            <li className="cursor-pointer hover:text-black/60">FAQs</li>
-                            <li className="cursor-pointer hover:text-black/60">Delivery Information</li>
-                            <li className="cursor-pointer hover:text-black/60">How It Works</li>
-                            <li className="cursor-pointer hover:text-black/60">Nutrition Information</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h1 className="text-[19px] uppercase tracking-tight mb-2 font-semibold">Contact Us</h1>
-                        <ul className="*:text-[15px]">
-                            <li className="cursor-pointer hover:text-black/60">Help & Support</li>
-                            <li className="cursor-pointer hover:text-black/60">Partner with us</li>
-                            <li className="cursor-pointer hover:text-black/60">Ride with us</li>
-                            <li className="cursor-pointer hover:text-black/60">Feedback</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h1 className="text-[19px] uppercase tracking-tight mb-2 font-semibold">Learn More</h1>
-                        <ul className="*:text-[15px]">
-                            <li className="cursor-pointer hover:text-black/60">Privacy Policy</li>
-                            <li className="cursor-pointer hover:text-black/60">Security</li>
-                            <li className="cursor-pointer hover:text-black/60">Terms</li>
-                            <li className="cursor-pointer hover:text-black/60">Sitemap</li>
-                        </ul>
-                    </div>                            
-                </div>
-
-                {/* Newsletter */}
-                <div className='mt-20 ml-20'>
-                    <p className='text-3xl pb-2 font-semibold'>Subscribe to our Newsletter</p>
-                    <p className='pb-6'>Get updates regarding offers, openings and more!</p>
-                    <form action="" className=' inline-block mr-4'>
-                        <input type="text" placeholder='Enter email address' 
-                        className='p-4 outline-none text-[18px] w-[16vw]'
-                        />
-                    <button className='bg-carrot/85 hover:bg-carrot text-white duration-300 border px-8 py-4 rounded-full text-xl outline-none font-semibold ml-6'>
+                    <button className='bg-carrot/85 hover:bg-carrot text-white duration-300 border px-6 py-3 rounded-full outline-none font-semibold text-sm md:text-base xs:w-9/12 md:w-auto'>
                         Subscribe
                     </button>
-                    </form>
-                </div>
+                </form>
             </div>
 
-            <div className='mb-4'>
+            {/* Links */}
+            <div className='grid grid-cols-3 gap-10 pb-10 border-b-2 border-neutral-300'>
+                {
+                    links.map((item, index) => (
+                        <div key={index}>
+                            <h1 className="text-sm xs:text-[18px] uppercase tracking-tight mb-2 font-semibold">
+                                {item.title}
+                            </h1>
+                            <ul>
+                                {
+                                    item.items.map((link, index) => (
+                                        <li key={index} className="cursor-pointer hover:text-black/60 text-xs xs:text-sm md:text-base">
+                                            {link}
+                                        </li>
+                                    ))
+                                }
+                            </ul>
+                        </div>
+                    ))
+                }
+                                       
+            </div>
+
+            <div className='pb-4 mt-10'>
                 {/* Socials */}
-                <div className='flex justify-center gap-8 mb-8'>
+                <div className='flex justify-center gap-3 xs:gap-6 sm:gap-8 mb-8'>
                     {
                         socials.map((item, index) => (
-                            <img src={item} alt={item} key={index} 
-                            width={45}
-                            className='border rounded-full p-2 cursor-pointer hover:bg-neutral-200/70'
-                            />
+                            <a href={item.link} key={index} target='_blank'><img src={item.icon} alt={item.name} 
+                            width={48}
+                            className='border rounded-full p-2 cursor-pointer hover:bg-neutral-200/70 w-10 xs:w-12'
+                            /></a>
                         ))
                     }
                 </div>
 
                 {/* Copyrights */}
-                <p className='text-center'>&copy; 2024 Zaayka Pvt. Ltd | All rights reserved.</p>
+                <p className='text-center text-sm xs:text-base'>&copy; 2024 Zaayka Pvt. Ltd | All rights reserved.</p>
             </div>
         </div>
     </div>
