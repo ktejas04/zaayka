@@ -93,7 +93,8 @@ const registerUser = async (req, res) => {
         return res.json({
             success: true,
             message: "User Registered Successfully",
-            createdUser
+            createdUser,
+            token
         })
 
     } catch (error) {
@@ -143,7 +144,8 @@ const loginUser = async (req, res) => {
         return res.json({
             success: true,
             message: "User Logged In Successfully",
-            loggedInUser
+            loggedInUser,
+            token
         })
     
     } catch (error) {
